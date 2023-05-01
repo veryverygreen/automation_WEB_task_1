@@ -10,8 +10,8 @@ def main():
     value, filename = variables()
 
     options = webdriver.FirefoxOptions()
-    options.binary_location = "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
-    service = Service("C:\\Users\\Алексей\\PycharmProjects\\automation_WEB_task_1\\firefoxdriver\\geckodriver.exe")
+    options.binary_location = "path_to_firefox.exe"
+    service = Service("path_to_driver")
     driver = webdriver.Firefox(service=service, options=options)
 
     driver.maximize_window()
