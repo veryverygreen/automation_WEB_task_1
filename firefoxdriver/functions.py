@@ -2,8 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from concurrent.futures import ThreadPoolExecutor
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import json
 
 no_div = "Нет информации о дивидендах"
@@ -48,26 +46,22 @@ def get_json(name, price):
 """Поиск дивидендов"""
 def get_report(link,filename):
     options = webdriver.FirefoxOptions()
-    options.binary_location = "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
-    service = Service("C:\\Users\\Алексей\\PycharmProjects\\automation_WEB_task_1\\firefoxdriver\\geckodriver.exe")
+    options.binary_location = "path_to_firefox.exe"
+    service = Service("path_to_driver")
     new_driver = webdriver.Firefox(service=service, options=options)
     new_driver.maximize_window()
     new_driver.get(url=link)
 
-    #name = WebDriverWait(new_driver, 2).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/section/div[7]/h2")).text[20:])
     name = new_driver.find_element(By.XPATH, "/html/body/div[5]/section/div[7]/h2").text[20:]
 
-    #print (name)
 
     try:
         if new_driver.find_element(By.XPATH, "//div[@class='earningNoData']").text == "Нет данных для отображения":
             div = no_div
     except Exception:
         div = new_driver.find_element(By.XPATH, "/html/body/div[5]/section/table/tbody/tr[1]/td[5]").text
-        #div = WebDriverWait(new_driver, 2).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/section/table/tbody/tr[1]/td[5]")).text)
         if "u041" in div:
             div = new_driver.find_element(By.XPATH, "/html/body/div[5]/section/table/tbody/tr/td[5]").text
-            #div = WebDriverWait(new_driver, 2).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[5]/section/table/tbody/tr/td[5]")).text)
 
         write_json(filename + ".json", {
             "Name": name,
