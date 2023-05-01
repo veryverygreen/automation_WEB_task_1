@@ -8,7 +8,7 @@ with open("report.json", "w") as file:
 def main():
     value, filename = variables()
 
-    service = Service("C:\\Users\\Алексей\\PycharmProjects\\automation_WEB_task_1\\chromedriver\\chromedriver.exe")
+    service = Service("path_to_driver")
     driver = webdriver.Chrome(service=service)
 
     driver.maximize_window()
