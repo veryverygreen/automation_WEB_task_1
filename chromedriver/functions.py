@@ -45,7 +45,7 @@ def get_json(name, price):
 
 """Поиск дивидендов"""
 def get_report(link,filename):
-    service = Service("C:\\Users\\Алексей\\PycharmProjects\\automation_WEB_task_1\\chromedriver\\chromedriver.exe")
+    service = Service("path_to_driver")
     new_driver = webdriver.Chrome(service=service)
     new_driver.maximize_window()
     new_driver.get(url=link)
