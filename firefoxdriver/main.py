@@ -13,7 +13,6 @@ def main():
     options.binary_location = "path_to_firefox.exe"
     service = Service("path_to_driver")
     driver = webdriver.Firefox(service=service, options=options)
-
     driver.maximize_window()
     driver.get(url="https://ru.investing.com/equities/russia")
 
