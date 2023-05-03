@@ -29,7 +29,6 @@ def check_link(link):
 
 """Запись данных в json файл"""
 def write_json(file, data):
-
     with open(file, "a") as file:
         json.dump(data, file)
         file.write("\n")
@@ -53,7 +52,6 @@ def get_report(link,filename):
     new_driver.get(url=link)
 
     name = new_driver.find_element(By.XPATH, "/html/body/div[5]/section/div[7]/h2").text[20:]
-
 
     try:
         if new_driver.find_element(By.XPATH, "//div[@class='earningNoData']").text == "Нет данных для отображения":
