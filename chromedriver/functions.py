@@ -29,7 +29,6 @@ def check_link(link):
 
 """Запись данных в json файл"""
 def write_json(file, data):
-
     with open(file, "a") as file:
         json.dump(data, file)
         file.write("\n")
