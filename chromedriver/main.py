@@ -10,7 +10,6 @@ def main():
 
     service = Service("path_to_driver")
     driver = webdriver.Chrome(service=service)
-
     driver.maximize_window()
     driver.get(url="https://ru.investing.com/equities/russia")
 
